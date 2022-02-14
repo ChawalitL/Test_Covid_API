@@ -18,8 +18,8 @@ class CovidInProvince {
     String province;
 
     factory CovidInProvince.fromJson(Map<String, dynamic> json) => CovidInProvince(
-        newCase: json["new_case"],
-        province: json["province"],
+        newCase: json["new_case"] ,
+        province: json["province"], 
     );
 
     Map<String, dynamic> toJson() => {

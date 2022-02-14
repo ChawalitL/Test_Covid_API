@@ -40,8 +40,8 @@ class _first1State extends State<First1> {
   int _page = 0;
   String search = '';
   Color _bgcolor = Colors.blue.shade100;
-  List A = [];
-  List B = [];
+  //List A = [];
+  //List B = [];
 
   @override
   void dispose() {
@@ -68,20 +68,18 @@ class _first1State extends State<First1> {
     final response1 = await http.get(Uri.parse(
         "https://covid19.ddc.moph.go.th/api/Cases/today-cases-by-provinces"));
 
-    var proJson = (response1.body.replaceAll('[', '').replaceAll(']', ''));
-
     ///////////////////////////////////////////////
     var proJson2 = json.decode(response1.body).cast<Map<String, dynamic>>();
     List result = proJson2
         .map<CovidInProvince>((json) => CovidInProvince.fromJson(json))
         .toList();
 
-    for (var i in proJson2) {
+    /*for (var i in proJson2) {
       if (i['new_case'] >= 0) {
         A.add(i['province']);
         B.add(i['new_case']);
       }
-    }
+    }*/
 
     setState(() {
       _proAPI = result;
@@ -94,6 +92,7 @@ class _first1State extends State<First1> {
     var O = _dataAPI?.totalCase;
     var P = _dataAPI?.totalCaseExcludeabroad;
     var I;
+
 
     _proAPI.sort((a, b) => b.newCase.compareTo(a.newCase));
 
@@ -233,6 +232,7 @@ class _first1State extends State<First1> {
                       children: [
                         Card(
                           elevation: 20,
+                          margin: EdgeInsets.all(20.0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
