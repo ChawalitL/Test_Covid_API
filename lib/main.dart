@@ -121,7 +121,7 @@ class _first1State extends State<First1> {
                       child: Container(
                         margin: EdgeInsets.all(20.0),
                         child: Text(
-                          "UPDATE.TIME\n${_dataAPI?.updateDate.toString().split(' ')[0]}",
+                          "UPDATE.TIME\n${_dataAPI?.updateDate.toString().split(' ')[0] ?? "Loading"}",
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 20,
