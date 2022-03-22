@@ -93,6 +93,7 @@ class _first1State extends State<First1> {
     var P = _dataAPI?.totalCaseExcludeabroad;
     var I;
 
+    //print(_dataAPI!.newCase);
 
     _proAPI.sort((a, b) => b.newCase.compareTo(a.newCase));
 
