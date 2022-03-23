@@ -120,7 +120,7 @@ class _first1State extends State<First1> {
                       margin: const EdgeInsets.all(30.0),
                       color: Colors.white,
                       child: Container(
-                        margin: EdgeInsets.all(20.0),
+                        margin:const EdgeInsets.all(20.0),
                         child: Text(
                           "UPDATE.TIME\n${_dataAPI?.updateDate.toString().split(' ')[0] ?? "Loading"}",
                           textAlign: TextAlign.center,
@@ -132,7 +132,7 @@ class _first1State extends State<First1> {
                     ),
                   ]),
                   Container(
-                    padding: EdgeInsets.all(30.0),
+                    padding:const EdgeInsets.all(30.0),
                     child: Wrap(
                       spacing: 30,
                       children: [
@@ -145,18 +145,18 @@ class _first1State extends State<First1> {
                           color: Colors.white,
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading: Icon(Icons.person_add_alt),
+                            leading:const Icon(Icons.person_add_alt),
                             iconColor: Colors.blue,
                             title: Text('ผู้ติดเชื้อวันนี้',
                                 style: TextStyle(color: Colors.teal.shade700)),
                             subtitle: Text(" ${_dataAPI?.newCase ?? "Loading"}",
-                                style: TextStyle(color: Colors.blue)),
-                            trailing: Icon(Icons.auto_graph_outlined),
+                                style:const TextStyle(color: Colors.blue)),
+                            trailing:const Icon(Icons.auto_graph_outlined),
                           ),
                         ),
                         Card(
                           elevation: 20,
-                          margin: EdgeInsets.all(20.0),
+                          margin:const EdgeInsets.all(20.0),
                           shadowColor: Colors.green,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -164,7 +164,7 @@ class _first1State extends State<First1> {
                           ),
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading: Icon(Icons.airplanemode_active_sharp),
+                            leading:const Icon(Icons.airplanemode_active_sharp),
                             iconColor: Colors.black,
                             title: Text(
                               'ไม่รวมจากต่างประเทศ',
@@ -172,13 +172,13 @@ class _first1State extends State<First1> {
                             ),
                             subtitle: Text(
                                 " ${_dataAPI?.newCaseExcludeabroad ?? "Loading"}",
-                                style: TextStyle(color: Colors.blue)),
-                            trailing: Icon(Icons.location_city),
+                                style:const TextStyle(color: Colors.blue)),
+                            trailing:const Icon(Icons.location_city),
                           ),
                         ),
                         Card(
                           elevation: 20,
-                          margin: EdgeInsets.all(20.0),
+                          margin:const EdgeInsets.all(20.0),
                           shadowColor: Colors.green,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -186,7 +186,7 @@ class _first1State extends State<First1> {
                           ),
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading: Icon(Icons.local_hospital_rounded),
+                            leading:const Icon(Icons.local_hospital_rounded),
                             iconColor: Colors.green,
                             title: Text('รักษาหายแล้ว',
                                 style: TextStyle(color: Colors.teal.shade700)),
@@ -201,20 +201,20 @@ class _first1State extends State<First1> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
-                          margin: EdgeInsets.all(20.0),
+                          margin:const EdgeInsets.all(20.0),
                           elevation: 20,
                           shadowColor: Colors.green,
                           color: Colors.white,
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading: Icon(Icons.person_remove_alt_1_sharp),
+                            leading:const Icon(Icons.person_remove_alt_1_sharp),
                             iconColor: Colors.red.shade300,
                             title: Text('เสียชีวิตวันนี้',
                                 style: TextStyle(color: Colors.teal.shade700)),
                             subtitle: Text(
                                 " ${_dataAPI?.newDeath ?? "Loading"}",
                                 style: TextStyle(color: Colors.red.shade400)),
-                            trailing: Icon(Icons.disabled_by_default_sharp),
+                            trailing:const Icon(Icons.disabled_by_default_sharp),
                           ),
                         ),
                       ],
@@ -227,13 +227,13 @@ class _first1State extends State<First1> {
               child: SafeArea(
                 child: ListView(children: [
                   Container(
-                    padding: EdgeInsets.all(30.0),
+                    padding:const EdgeInsets.all(30.0),
                     child: Wrap(
                       spacing: 30,
                       children: [
                         Card(
                           elevation: 20,
-                          margin: EdgeInsets.all(20.0),
+                          margin:const EdgeInsets.all(20.0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -241,20 +241,20 @@ class _first1State extends State<First1> {
                           color: Colors.white,
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading: Icon(Icons.person_add_alt),
+                            leading:const Icon(Icons.person_add_alt),
                             iconColor: Colors.blue,
                             title: Text('ผู้ติดเชื้อสะสม',
                                 style: TextStyle(color: Colors.teal.shade700)),
                             subtitle: Text(
                                 "  ${_dataAPI?.totalCase ?? "Loading"}",
-                                style: TextStyle(
+                                style:const TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold)),
                           ),
                         ),
                         Card(
                           elevation: 20,
-                          margin: EdgeInsets.all(20.0),
+                          margin: const EdgeInsets.all(20.0),
                           shadowColor: Colors.red.shade700,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -270,7 +270,7 @@ class _first1State extends State<First1> {
                             ),
                             subtitle: Text(
                                 "  ${_dataAPI?.totalCaseExcludeabroad ?? "Loading"}",
-                                style: TextStyle(
+                                style:const TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold)),
                           ),
@@ -285,13 +285,13 @@ class _first1State extends State<First1> {
                           ),
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading: Icon(Icons.local_airport),
+                            leading: const Icon(Icons.local_airport),
                             iconColor: Colors.blue,
                             title: Text('มาจากต่างปะเทศ',
                                 style: TextStyle(color: Colors.teal.shade700)),
                             subtitle: Text(
                               "  ${I ?? "Loading"}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.blue,
                                   fontWeight: FontWeight.bold),
                             ),
@@ -363,7 +363,7 @@ class _first1State extends State<First1> {
                               child: ListTile(
                                 title: Text(_proAPI[index].province,
                                     textAlign: TextAlign.center,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.blue,
                                         fontWeight: FontWeight.bold)),
                                 subtitle: Text(
@@ -417,21 +417,21 @@ class _first1State extends State<First1> {
     Widget? _tappbar;
     switch (page) {
       case 0:
-        _temptitleOn = Text("Today Covid-19");
+        _temptitleOn = const Text("Today Covid-19");
         _tembgcolor = Colors.blue.shade100;
         _tappbar = AppBar(
           title: _temptitleOn,
         );
         break;
       case 1:
-        _temptitleOn = Text("All Time Covid-19");
+        _temptitleOn = const Text("All Time Covid-19");
         _tembgcolor = Colors.pink.shade50;
         _tappbar = AppBar(
           title: _temptitleOn,
         );
         break;
       case 2:
-        _temptitleOn = Text('Province');
+        _temptitleOn = const Text('Province');
         _tembgcolor = Colors.purple.shade100;
         _tappbar = AppBar(
           title: _temptitleOn,
