@@ -4,11 +4,6 @@
 
 // ignore_for_file: unnecessary_null_comparison, prefer_null_aware_operators, prefer_if_null_operators
 
-import 'dart:convert';
-
-CovidTodayResult covidTodayResultFromJson(String str) => CovidTodayResult.fromJson(json.decode(str));
-
-String covidTodayResultToJson(CovidTodayResult data) => json.encode(data.toJson());
 
 class CovidTodayResult {
     CovidTodayResult({

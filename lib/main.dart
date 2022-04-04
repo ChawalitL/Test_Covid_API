@@ -40,8 +40,6 @@ class _first1State extends State<First1> {
   int _page = 0;
   String search = '';
   Color _bgcolor = Colors.blue.shade100;
-  //List A = [];
-  //List B = [];
 
   @override
   void dispose() {
@@ -63,7 +61,9 @@ class _first1State extends State<First1> {
   Future<void> getData() async {
     final response = await http.get(
         Uri.parse("https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"));
-    var b = (response.body.replaceAll('[', '').replaceAll(']', ''));
+    var b = json.decode((response.body)) as List;
+
+    print(b);
 
     final response1 = await http.get(Uri.parse(
         "https://covid19.ddc.moph.go.th/api/Cases/today-cases-by-provinces"));
@@ -83,7 +83,7 @@ class _first1State extends State<First1> {
 
     setState(() {
       _proAPI = result;
-      _dataAPI = covidTodayResultFromJson(b);
+      _dataAPI = CovidTodayResult.fromJson(b[0]);
     });
   }
 
@@ -120,7 +120,7 @@ class _first1State extends State<First1> {
                       margin: const EdgeInsets.all(30.0),
                       color: Colors.white,
                       child: Container(
-                        margin:const EdgeInsets.all(20.0),
+                        margin: const EdgeInsets.all(20.0),
                         child: Text(
                           "UPDATE.TIME\n${_dataAPI?.updateDate.toString().split(' ')[0] ?? "Loading"}",
                           textAlign: TextAlign.center,
@@ -132,7 +132,7 @@ class _first1State extends State<First1> {
                     ),
                   ]),
                   Container(
-                    padding:const EdgeInsets.all(30.0),
+                    padding: const EdgeInsets.all(30.0),
                     child: Wrap(
                       spacing: 30,
                       children: [
@@ -145,18 +145,18 @@ class _first1State extends State<First1> {
                           color: Colors.white,
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading:const Icon(Icons.person_add_alt),
+                            leading: const Icon(Icons.person_add_alt),
                             iconColor: Colors.blue,
                             title: Text('ผู้ติดเชื้อวันนี้',
                                 style: TextStyle(color: Colors.teal.shade700)),
                             subtitle: Text(" ${_dataAPI?.newCase ?? "Loading"}",
-                                style:const TextStyle(color: Colors.blue)),
-                            trailing:const Icon(Icons.auto_graph_outlined),
+                                style: const TextStyle(color: Colors.blue)),
+                            trailing: const Icon(Icons.auto_graph_outlined),
                           ),
                         ),
                         Card(
                           elevation: 20,
-                          margin:const EdgeInsets.all(20.0),
+                          margin: const EdgeInsets.all(20.0),
                           shadowColor: Colors.green,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -164,7 +164,8 @@ class _first1State extends State<First1> {
                           ),
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading:const Icon(Icons.airplanemode_active_sharp),
+                            leading:
+                                const Icon(Icons.airplanemode_active_sharp),
                             iconColor: Colors.black,
                             title: Text(
                               'ไม่รวมจากต่างประเทศ',
@@ -172,13 +173,13 @@ class _first1State extends State<First1> {
                             ),
                             subtitle: Text(
                                 " ${_dataAPI?.newCaseExcludeabroad ?? "Loading"}",
-                                style:const TextStyle(color: Colors.blue)),
-                            trailing:const Icon(Icons.location_city),
+                                style: const TextStyle(color: Colors.blue)),
+                            trailing: const Icon(Icons.location_city),
                           ),
                         ),
                         Card(
                           elevation: 20,
-                          margin:const EdgeInsets.all(20.0),
+                          margin: const EdgeInsets.all(20.0),
                           shadowColor: Colors.green,
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -186,7 +187,7 @@ class _first1State extends State<First1> {
                           ),
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading:const Icon(Icons.local_hospital_rounded),
+                            leading: const Icon(Icons.local_hospital_rounded),
                             iconColor: Colors.green,
                             title: Text('รักษาหายแล้ว',
                                 style: TextStyle(color: Colors.teal.shade700)),
@@ -201,20 +202,22 @@ class _first1State extends State<First1> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
-                          margin:const EdgeInsets.all(20.0),
+                          margin: const EdgeInsets.all(20.0),
                           elevation: 20,
                           shadowColor: Colors.green,
                           color: Colors.white,
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading:const Icon(Icons.person_remove_alt_1_sharp),
+                            leading:
+                                const Icon(Icons.person_remove_alt_1_sharp),
                             iconColor: Colors.red.shade300,
                             title: Text('เสียชีวิตวันนี้',
                                 style: TextStyle(color: Colors.teal.shade700)),
                             subtitle: Text(
                                 " ${_dataAPI?.newDeath ?? "Loading"}",
                                 style: TextStyle(color: Colors.red.shade400)),
-                            trailing:const Icon(Icons.disabled_by_default_sharp),
+                            trailing:
+                                const Icon(Icons.disabled_by_default_sharp),
                           ),
                         ),
                       ],
@@ -227,13 +230,13 @@ class _first1State extends State<First1> {
               child: SafeArea(
                 child: ListView(children: [
                   Container(
-                    padding:const EdgeInsets.all(30.0),
+                    padding: const EdgeInsets.all(30.0),
                     child: Wrap(
                       spacing: 30,
                       children: [
                         Card(
                           elevation: 20,
-                          margin:const EdgeInsets.all(20.0),
+                          margin: const EdgeInsets.all(20.0),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -241,13 +244,13 @@ class _first1State extends State<First1> {
                           color: Colors.white,
                           child: ListTile(
                             minLeadingWidth: 20,
-                            leading:const Icon(Icons.person_add_alt),
+                            leading: const Icon(Icons.person_add_alt),
                             iconColor: Colors.blue,
                             title: Text('ผู้ติดเชื้อสะสม',
                                 style: TextStyle(color: Colors.teal.shade700)),
                             subtitle: Text(
                                 "  ${_dataAPI?.totalCase ?? "Loading"}",
-                                style:const TextStyle(
+                                style: const TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold)),
                           ),
@@ -270,7 +273,7 @@ class _first1State extends State<First1> {
                             ),
                             subtitle: Text(
                                 "  ${_dataAPI?.totalCaseExcludeabroad ?? "Loading"}",
-                                style:const TextStyle(
+                                style: const TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold)),
                           ),
