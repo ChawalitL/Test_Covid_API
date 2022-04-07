@@ -47,7 +47,7 @@ class _first1State extends State<First1> {
   void initState() {
     super.initState();
     getData();
-    _pageController = new PageController();
+    _pageController = PageController();
     _appbar = AppBar(
       title: Text('Today Covid-19'),
     );
