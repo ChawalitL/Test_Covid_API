@@ -14,18 +14,14 @@ class Firstapp1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: const First1(
-        title: 'My App',
-      ),
+      home: First1(),
       theme: ThemeData(primarySwatch: Colors.grey),
     );
   }
 }
 
 class First1 extends StatefulWidget {
-  const First1({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  First1({Key? key}) : super(key: key);
 
   @override
   _first1State createState() => _first1State();
@@ -35,9 +31,9 @@ class _first1State extends State<First1> {
   PageController? _pageController;
   CovidTodayResult? _dataAPI;
   List _proAPI = [];
-  var _titleOn;
   var _appbar;
   int _page = 0;
+  Widget? _titleOn;
   String search = '';
   Color _bgcolor = Colors.blue.shade100;
 
@@ -63,7 +59,7 @@ class _first1State extends State<First1> {
         Uri.parse("https://covid19.ddc.moph.go.th/api/Cases/today-cases-all"));
     var b = json.decode((response.body)) as List;
 
-    print(b);
+    print(b[0]);
 
     final response1 = await http.get(Uri.parse(
         "https://covid19.ddc.moph.go.th/api/Cases/today-cases-by-provinces"));
@@ -91,7 +87,7 @@ class _first1State extends State<First1> {
   Widget build(BuildContext context) {
     var O = _dataAPI?.totalCase;
     var P = _dataAPI?.totalCaseExcludeabroad;
-    var I;
+    int? I;
 
     //print(_dataAPI!.newCase);
 
@@ -131,13 +127,14 @@ class _first1State extends State<First1> {
                       ),
                     ),
                   ]),
-                  Container(
-                    padding: const EdgeInsets.all(30.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 15),
                     child: Wrap(
                       spacing: 30,
                       children: [
                         Card(
                           elevation: 20,
+                          margin: const EdgeInsets.all(20),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50),
                           ),
@@ -293,7 +290,7 @@ class _first1State extends State<First1> {
                             title: Text('มาจากต่างปะเทศ',
                                 style: TextStyle(color: Colors.teal.shade700)),
                             subtitle: Text(
-                              "  ${I ?? "Loading"}",
+                              "  ${I ?? "Loading"} ",
                               style: const TextStyle(
                                   color: Colors.blue,
                                   fontWeight: FontWeight.bold),
@@ -415,7 +412,7 @@ class _first1State extends State<First1> {
   }
 
   void onPageChange(int page) {
-    var _tembgcolor;
+    Color? _tembgcolor;
     Widget? _temptitleOn;
     Widget? _tappbar;
     switch (page) {
@@ -442,9 +439,9 @@ class _first1State extends State<First1> {
         break;
     }
     setState(() {
-      _titleOn = _temptitleOn;
+      _titleOn = _temptitleOn ?? Text('Covid-19');
       _page = page;
-      _bgcolor = _tembgcolor;
+      _bgcolor = _tembgcolor ??= Colors.white;
       _appbar = _tappbar;
     });
   }
