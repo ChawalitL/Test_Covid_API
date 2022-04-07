@@ -14,14 +14,15 @@ class Firstapp1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: First1(),
+      debugShowCheckedModeBanner: false,
+      home: const First1(),
       theme: ThemeData(primarySwatch: Colors.grey),
     );
   }
 }
 
 class First1 extends StatefulWidget {
-  First1({Key? key}) : super(key: key);
+  const First1({Key? key}) : super(key: key);
 
   @override
   _first1State createState() => _first1State();
